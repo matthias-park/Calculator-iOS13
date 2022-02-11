@@ -10,11 +10,29 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var displayLabel: UILabel!
+    
+    var isFinishiedTypingNumber: Bool = false
+    
+    @IBAction func calcButtonPressed(_ sender: UIButton) {
+        isFinishiedTypingNumber = true
+        displayLabel.text = " 0  "
     }
-
-
+    
+    
+    @IBAction func numButtonPressed(_ sender: UIButton) {
+        
+        if let numValue = sender.currentTitle {
+            if isFinishiedTypingNumber {
+                displayLabel.text = numValue
+                isFinishiedTypingNumber = false
+            } else {
+                displayLabel.text = displayLabel.text! + numValue
+            }
+            
+        }
+        
+    }
+    
 }
 
